@@ -78,5 +78,9 @@ func main() {
 		}{People: people.Val()})
 	})
 
+	r.Get("/api/healtz", func(rw http.ResponseWriter, r *http.Request) {
+		rw.Write([]byte("c'e' una bellissima atmosfera!"))
+	})
+
 	http.ListenAndServe(":"+serverPort, r)
 }
