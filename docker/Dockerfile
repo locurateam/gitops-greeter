@@ -1,9 +1,9 @@
 FROM golang:1.16-alpine
-COPY . /go
+COPY . /app
+WORKDIR /app
 ARG CGO_ENABLED=0
-RUN go build main.go
+RUN go build cmd/greeter/main.go
 FROM scratch
-COPY --from=0 /go/main /greeter
-COPY --from=0 /go/assets /assets
+COPY --from=0 /app/main /greeter
 WORKDIR /
 ENTRYPOINT ["/greeter"]
